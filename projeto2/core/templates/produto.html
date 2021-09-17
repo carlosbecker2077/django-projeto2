@@ -1,0 +1,35 @@
+{% load static %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+<body>
+    <div class="container">
+        <h1>Bem-vindo à página de produtos!</h1>
+        <p>Preencha o formulário para cadastrar um produto.</p>
+        {% bootstrap_messages %}
+
+        <form action="{% url 'produto' %}" method="POST" autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            {% endbuttons %}
+        </form>
+    </div>
+    
+
+    
+    {% bootstrap_javascript jquery='full' %}
+    <script type="text/javascript" src="{% static 'js/funcs.js'%}"></script>
+</body>
+</html>
